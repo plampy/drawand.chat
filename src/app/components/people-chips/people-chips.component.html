@@ -1,0 +1,11 @@
+<div 
+  *ngFor="let user of (this.userService.connectedUsers$ | async)" 
+  class="person-chip" 
+  [attr.id]="user.id"
+  [style.left.px]="user.x + 16"
+  [style.top.px]="user.y - 16"
+  [class.active]="user.active"
+  [ngStyle]="{'background-color': user.chipColor}"
+>
+  {{user.username}}
+</div>
