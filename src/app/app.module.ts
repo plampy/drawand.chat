@@ -10,8 +10,8 @@ import { ChatRoomComponent } from './views/chat-room/chat-room.component';
 import { DrawCanvasComponent } from './components/draw-canvas/draw-canvas.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { PeopleChipsComponent } from './components/people-chips/people-chips.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NameChangeComponent } from './components/name-change/name-change.component';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { NameChangeComponent } from './components/name-change/name-change.compon
     DrawCanvasComponent,
     ChatComponent,
     PeopleChipsComponent,
-    ToolbarComponent,
-    NameChangeComponent
+    NameChangeComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

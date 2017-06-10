@@ -1,0 +1,20 @@
+@toolbar-width: 264px;
+@transition-speed: 150ms;
+@transition-curve-acceleration: ease-in;
+@transition-curve-deceleration: ease-out;
+
+
+#toolbar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: @toolbar-width;
+    background: red;
+    z-index: 2;
+}
+#main-content{
+    position: relative;
+    left: @toolbar-width;
+    
+}

@@ -11,10 +11,11 @@ export class PaletteStateService {
   state$: BehaviorSubject<Palette>;
 
   constructor() { 
-    this.state$ = new BehaviorSubject<Palette>(  {
+    this.state$ = new BehaviorSubject<Palette>({
       penWidth: 10,
       color: this.defaultColor,
-      opacity: this.defaultOpacity
+      opacity: this.defaultOpacity,
+      previousColors: <string[]>[]
     });
   }
 

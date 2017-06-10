@@ -8,7 +8,7 @@ import {
   Renderer2,
   OnDestroy
 } from '@angular/core';
-import { WsClientService, PaletteStateService } from '../../services';
+import { WsClientService, PaletteStateService, ElementProjectionService } from '../../services';
 import { Subscription } from 'rxjs/Subscription';
 import { Palette } from '../../dtos';
 
@@ -51,7 +51,8 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
     private el: ElementRef,
     private wsClient: WsClientService,
     private renderer: Renderer2,
-    private palette: PaletteStateService) { 
+    private palette: PaletteStateService,
+    private eps: ElementProjectionService) { 
       this.subscriptions = [];
     }
 
@@ -70,6 +71,7 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.context = this.canvas.nativeElement.getContext("2d");
+    this.eps.projectedElement = this.canvas.nativeElement;
   }
 
   ngOnDestroy() {
@@ -102,15 +104,20 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
     this.context.fillRect(data.x, data.y, data.width, data.height);
     this.context.globalAlpha = this.palette.defaultOpacity;
   }
+
   strokePath(data: any, emit?: boolean) {
+    var startCoords = this.eps.projectXY({x: data.startX, y: data.startY});
+    var endCoords = this.eps.projectXY({x: data.endX, y: data.endY});
+
     this.context.globalAlpha = data.opacity || this.palette.defaultOpacity;
     this.context.lineCap = "round";
     this.context.lineJoin = "round";
     this.context.strokeStyle = data.color || this.palette.defaultColor;
     this.context.lineWidth = data.penWidth;
     this.context.beginPath();
-    this.context.moveTo(data.startX, data.startY);
-    this.context.lineTo(data.endX, data.endY);
+
+    this.context.moveTo(startCoords.x, startCoords.y);
+    this.context.lineTo(endCoords.x, endCoords.y);
     this.context.stroke();
     this.context.globalAlpha = this.palette.defaultOpacity;
     if(emit){
@@ -154,10 +161,14 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
       var state = this.paletteStateRef;
       this.isDrawing = true;
       this.firstClick = true;
-      this.prevX = this.currentX - (state.penWidth /2);
-      this.prevY = this.currentY - (state.penWidth /2);
-      this.currentX = evt.clientX - (state.penWidth /2);
-      this.currentY = evt.clientY - (state.penWidth /2);
+      // this.prevX = this.currentX - (state.penWidth /2);
+      // this.prevY = this.currentY - (state.penWidth /2);
+      // this.currentX = evt.clientX - (state.penWidth /2);
+      // this.currentY = evt.clientY - (state.penWidth /2);
+      this.prevX = this.currentX;
+      this.prevY = this.currentY;
+      this.currentX = evt.clientX;
+      this.currentY = evt.clientY;
       if (this.firstClick) {
         this.strokePath({
             opacity: state.opacity,
@@ -176,8 +187,10 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.isDrawing) {
         this.prevX = this.currentX;
         this.prevY = this.currentY;
-        this.currentX = evt.clientX - (state.penWidth /2);
-        this.currentY = evt.clientY - (state.penWidth/2);
+        // this.currentX = evt.clientX - (state.penWidth /2);
+        // this.currentY = evt.clientY - (state.penWidth/2);
+        this.currentX = evt.clientX;
+        this.currentY = evt.clientY;
         this.strokePath({
             opacity: state.opacity,
             startX: this.prevX,

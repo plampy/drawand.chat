@@ -1,4 +1,9 @@
-<app-draw-canvas [width]="1000" [height]="600"></app-draw-canvas>
-<app-chat></app-chat>
-<people-chips></people-chips>
-<name-change></name-change>
+<div id="toolbar">
+    <app-chat></app-chat>
+    <name-change></name-change>
+</div>
+<div id="main-content">
+    <app-draw-canvas [width]="2500" [height]="2500"></app-draw-canvas>
+    <people-chips></people-chips>
+</div>
+

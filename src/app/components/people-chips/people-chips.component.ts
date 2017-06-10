@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, PaletteStateService } from '../../services';
+import { UserService, PaletteStateService, ElementProjectionService } from '../../services';
 
 @Component({
   selector: 'people-chips',
@@ -9,7 +9,8 @@ import { UserService, PaletteStateService } from '../../services';
 export class PeopleChipsComponent implements OnInit {
 
   constructor(
-    public userService: UserService
+    public userService: UserService,
+    public eps: ElementProjectionService
     ) { }
 
   ngOnInit() {
