@@ -15,6 +15,7 @@ import { NameChangeComponent } from './components/name-change/name-change.compon
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { BrushSizeComponent } from './components/brush-size/brush-size.component';
 import { EraserComponent } from './components/eraser/eraser.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EraserComponent } from './components/eraser/eraser.component';
     NameChangeComponent,
     ColorPickerComponent,
     BrushSizeComponent,
-    EraserComponent
+    EraserComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,

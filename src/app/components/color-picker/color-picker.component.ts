@@ -21,7 +21,7 @@ export class ColorPickerComponent implements OnInit, AfterViewInit {
     var el = this.colorPickerContainer.nativeElement;
     var colorPicker = el.querySelector('.color-picker');
     colorPicker.style.borderRadius = "4px";
-    colorPicker.style.backgroundColor= "#333";
+    colorPicker.style.backgroundColor= "#282c34";
     colorPicker.style.border= "none";
   }
   handleColorChange(color){

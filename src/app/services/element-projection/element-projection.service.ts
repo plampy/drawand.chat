@@ -21,6 +21,7 @@ export class ElementProjectionService {
   }
 
   projectXY(inputCoords){
+    debugger;
     if(!this.projectedElement){
       return {
         xAdd: 0,

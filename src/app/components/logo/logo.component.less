@@ -1,0 +1,26 @@
+@import "../../../globals.less";
+.logo{
+    height: 64px;
+    border-bottom: 1px solid @color-neutral-black;
+    color: @color-neutral-white-lighter;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .logo-text{
+        color: @color-neutral-white-lighter;
+        font-weight: bold;
+        font-size: 24px;
+    }
+    #beta-banner{
+        position: absolute;
+        width: 100px;
+        text-align: center;
+        font-size: 14px;
+        background-color: @color-primary-dark;
+        left: -32px;
+        top:8px;
+        transform: rotateZ(-45deg);
+    }
+}

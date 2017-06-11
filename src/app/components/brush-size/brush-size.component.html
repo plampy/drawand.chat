@@ -1,7 +1,7 @@
 <div class="brush-size">
   <div class="brush-size-inner">
     <i class="material-icons">brush</i>
-    <input type="range" />
+    <input type="range" [value]="(this.palette.state$ | async)?.penWidth" (change)="handleBrushSizeChange($event)" min="2" max="50" />
     <i class="material-icons">brush</i>
   </div>
 </div>
