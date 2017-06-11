@@ -11,6 +11,7 @@ export class ElementProjectionService {
     ) { 
   }
 
+
   projectX(inputX){
     return this.projectXY({x : inputX, y: 0}).x;
   }

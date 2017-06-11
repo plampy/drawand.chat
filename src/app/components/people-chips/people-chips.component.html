@@ -2,8 +2,8 @@
   *ngFor="let user of (this.userService.connectedUsers$ | async)" 
   class="person-chip" 
   [attr.id]="user.id"
-  [style.left.px]="this.eps.projectX(user.x) + 16"
-  [style.top.px]="this.eps.projectY(user.y) - 16"
+  [style.left.px]="user.x + 16"
+  [style.top.px]="user.y - 16"
   [class.active]="user.active"
   [ngStyle]="{'background-color': user.chipColor}"
 >

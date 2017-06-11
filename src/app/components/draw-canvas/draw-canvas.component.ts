@@ -106,9 +106,12 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   strokePath(data: any, emit?: boolean) {
-    var startCoords = this.eps.projectXY({x: data.startX, y: data.startY});
-    var endCoords = this.eps.projectXY({x: data.endX, y: data.endY});
-
+    // var startCoords = this.eps.projectXY({x: data.startX, y: data.startY});
+    // var endCoords = this.eps.projectXY({x: data.endX, y: data.endY});
+    // data.startX = startCoords.x;
+    // data.startY = startCoords.y;
+    // data.endX = endCoords.x;
+    // data.endY = endCoords.y;
     this.context.globalAlpha = data.opacity || this.palette.defaultOpacity;
     this.context.lineCap = "round";
     this.context.lineJoin = "round";
@@ -116,8 +119,8 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
     this.context.lineWidth = data.penWidth;
     this.context.beginPath();
 
-    this.context.moveTo(startCoords.x, startCoords.y);
-    this.context.lineTo(endCoords.x, endCoords.y);
+    this.context.moveTo(data.startX, data.startY);
+    this.context.lineTo(data.endX, data.endY);
     this.context.stroke();
     this.context.globalAlpha = this.palette.defaultOpacity;
     if(emit){
@@ -169,13 +172,17 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
       this.prevY = this.currentY;
       this.currentX = evt.clientX;
       this.currentY = evt.clientY;
+
+      var startCoords = this.eps.projectXY({x: this.prevX, y: this.prevY});
+      var endCoords = this.eps.projectXY({x: this.currentX, y: this.currentY});
+
       if (this.firstClick) {
         this.strokePath({
             opacity: state.opacity,
-            startX: this.currentX ,
-            startY: this.currentY ,
-            endX: this.currentX,
-            endY: this.currentY,
+            startX: endCoords.x ,
+            startY: endCoords.y ,
+            endX: endCoords.x,
+            endY: endCoords.y,
             color: state.color,
             penWidth: state.penWidth,
           }, true);
@@ -191,12 +198,15 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
         // this.currentY = evt.clientY - (state.penWidth/2);
         this.currentX = evt.clientX;
         this.currentY = evt.clientY;
+
+        var startCoords = this.eps.projectXY({x: this.prevX, y: this.prevY});
+        var endCoords = this.eps.projectXY({x: this.currentX, y: this.currentY});
         this.strokePath({
             opacity: state.opacity,
-            startX: this.prevX,
-            startY: this.prevY,
-            endX: this.currentX,
-            endY: this.currentY,
+            startX: startCoords.x,
+            startY: startCoords.y,
+            endX: endCoords.x,
+            endY: endCoords.y,
             color: state.color,
             penWidth: state.penWidth,
           }, true);
