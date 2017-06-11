@@ -1,3 +1,14 @@
-<p>
-  color-picker works!
-</p>
+<div id="color-picker">
+      <div id="color-picker-container" #colorPickerContainer>
+            <span  
+                  [(colorPicker)]="color" 
+                  [style.background]="color"
+                  [cpDialogDisplay]="'inline'"
+                  [cpToggle]="true"
+                  [cpAlphaChannel]="'disabled'"
+                  (colorPickerChange)="handleColorChange($event)"
+                  >
+            </span>
+      </div>
+</div>
+            

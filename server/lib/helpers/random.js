@@ -1,3 +1,9 @@
+const adjectives = require('../../resx/adjectives.json');
+const nouns = require('../../resx/nouns.json');
+
+const adjLength = adjectives.length;
+const nounLength = nouns.length;
+
 module.exports = {
     randomColor: function() {
         // random color function derived from code found at
@@ -8,5 +14,12 @@ module.exports = {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
+    },
+    randomUsername(){
+        var adjectiveIndex = Math.floor(Math.random() * adjLength);
+        var nounIndex =  Math.floor(Math.random() * nounLength);
+        var adjective = adjectives[adjectiveIndex].charAt(0).toUpperCase() + adjectives[adjectiveIndex].slice(1);
+        var noun = nouns[nounIndex].charAt(0).toUpperCase() + nouns[nounIndex].slice(1);
+        return adjective + noun;
     }
 }

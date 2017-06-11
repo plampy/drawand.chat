@@ -15,7 +15,7 @@ module.exports = function (server){
     ioRef.on('connection', function(socket){
         var newUser = {
             id: socket.id,
-            username: "user_" + socket.id,
+            username: random.randomUsername(),
             socket: socket,
             x: 0,
             y: 0,

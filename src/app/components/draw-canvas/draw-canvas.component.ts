@@ -159,8 +159,12 @@ export class DrawCanvasComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setEventListeners() {
+    var _self = this;
+    debugger;
     var nativeElement = this.canvas.nativeElement;
     this.canvasMouseDown = this.renderer.listen(nativeElement, 'mousedown', (evt) => {
+      var i = _self;
+      debugger;
       var state = this.paletteStateRef;
       this.isDrawing = true;
       this.firstClick = true;

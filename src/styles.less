@@ -1,7 +1,33 @@
+@import "./globals.less";
 /* You can add global styles to this file, and also import other style files */
 *{
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
+
+}
+
+input[type="text"]{
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 16px;
+    outline: none;
+}
+
+button.btn{
+    width: inherit;
+    padding: 8px 16px;
+    background-color: @color-primary;
+    border: 1px solid @color-primary-dark;
+    color: @color-neutral-white-lighter;
+    border-radius: @border-radius;
+    outline: none;
+    cursor: pointer;
+}
+
+button.btn:active{
+    background-color: @color-primary-dark;
 }
