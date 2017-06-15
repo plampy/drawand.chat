@@ -8,7 +8,7 @@ import { PaletteStateService } from '../../services';
 export class BrushSizeComponent implements OnInit {
 
   constructor(
-    private palette: PaletteStateService
+    public palette: PaletteStateService
   ) { }
 
   ngOnInit() {

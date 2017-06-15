@@ -1,6 +1,70 @@
 @import "../../../globals.less";
 
+@chat-font-size: 13px;
+
 .chat{
-    padding: 16px;
     color: @color-neutral-white-lighter;
+    & * {
+        font-size: @chat-font-size;
+    }
+    .chat-header{
+        border-top: 1px solid @color-neutral-black;
+        padding-top: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 8px;
+        box-shadow: 0 4px 4px 1px rgba(0, 0, 0, .3); 
+        z-index: 10;
+    }
+    .chat-footer{
+        position: absolute;
+        width: 100%;
+        padding: 16px;
+        box-shadow: 0 -4px 4px 1px rgba(0, 0, 0, .3); 
+        textarea{
+            display: block;
+            background: @color-neutral-black-darker;
+            border-radius: @border-radius;
+            padding: 8px;
+            border: none;
+            box-shadow: inset 0 0 1px 1px rgba(0,0,0,.5);
+            width: 100%;
+            height: 125px;
+            outline: none;
+            color: @color-neutral-white-lighter;
+        }
+        .btn{
+            margin-top:8px;
+            width: 50%;
+            display: inline-block;
+        }
+        i{
+            margin-top: 8px;
+            float: right;
+            font-size:32px;
+            cursor: pointer;
+        }
+        bottom: 0;
+        z-index: 2;
+    }
+    .chat-body{
+        position: absolute;
+        background: @color-neutral-black-darker;
+        
+        width: 100%;
+        
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-top:268px;
+        margin-bottom: 202px;
+        overflow-y: auto;
+        
+        .chat-message {
+            min-height: 100px;
+            
+        }
+    }
 }
