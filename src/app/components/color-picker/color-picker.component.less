@@ -13,18 +13,57 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        .current-color{
+            max-width: 90px;
+            flex: 2;
+            height: 24px;
+            border-radius: 500px;
+            border: 2px solid #FFF;
+        }
         .color-option{
             width: 24px;
             height: 24px;
             border-radius: 100px;
             background-color: #FFF;
             cursor: pointer;
+
+            &.eraser {
+                background-color: @color-neutral-black-darker;
+                border-radius: 100px;
+                border: 2px dashed #FFF;
+                box-sizing: border-box;
+                position: relative;
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+
+                .text{
+                    position: absolute;
+                    line-height: 24px;
+                    font-size: 24px;
+                    text-align: center;
+                    left: 6px;
+                    top: -4px;
+                }
+            }
         }
         .color-picker-opener{
             width: 24px;
             height: 24px;
             border-radius: 100px;
             border: 2px dotted #FFF;
+            cursor:pointer;
+            text-align: center;
+            box-sizing:border-box;
+            position: relative;
+            .text{
+                position: absolute;
+                line-height: 24px;
+                font-size: 24px;
+                text-align: center;
+                left: 3px;
+                top: -3px;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ export class ChatComponent implements OnInit {
   @ViewChild('chatBody') chatBody;
   public chatMessage: string;
   subs: Subscription[];
+  showUserOptions: boolean = false;
 
   constructor(
     public chatService: ChatService
@@ -22,7 +23,11 @@ export class ChatComponent implements OnInit {
       
   }
 
-  ngAfterViewInit(){
+  ngAfterContentInit(){
+    setTimeout(() => {
+      var el = this.chatBody.nativeElement;
+      el.scrollTop = el.scrollHeight;
+    }, 200)
   }
 
   ngAfterViewChecked(){
@@ -46,5 +51,7 @@ export class ChatComponent implements OnInit {
       this.chatMessage = "";
     }
   }
-
+  toggleUserOptions() {
+    this.showUserOptions = !this.showUserOptions;
+  }
 }

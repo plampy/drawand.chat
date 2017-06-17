@@ -21,7 +21,6 @@ export class ChatService {
   }
 
   handleAllChatHistory(data) {
-    debugger;
     this.chatMessages$.next(data);
   }
 

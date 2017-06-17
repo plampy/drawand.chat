@@ -21,6 +21,9 @@
   <div class="chat-footer">
     <textarea class="chat-input" [(ngModel)]="chatMessage" placeholder="send a message"></textarea>
     <button class="btn" (click)="sendChatMessage()">Chat</button>
-    <i class="material-icons">settings</i>
+    <i class="material-icons" (click)="toggleUserOptions()">settings</i>
+  </div>
+  <div *ngIf="this.showUserOptions" class="user-options">
+    <name-change></name-change>
   </div>
 </div>

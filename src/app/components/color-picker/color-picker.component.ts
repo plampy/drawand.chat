@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 import { PaletteStateService } from '../../services';
 
 @Component({
-  selector: 'color-picker',
+  selector: 'app-color-picker',
   templateUrl: './color-picker.component.html',
   styleUrls: ['./color-picker.component.less']
 })
@@ -25,8 +25,12 @@ export class ColorPickerComponent implements OnInit, AfterViewInit {
     // colorPicker.style.border= "none";
   }
   handleColorChange(color){
+    this.color = color;
     var currentState = Object.assign({}, this.palette.state$.value);
     currentState.color = color;
     this.palette.state$.next(currentState);
+  }
+  colorPickerSelect() {
+    debugger;
   }
 }

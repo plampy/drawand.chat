@@ -1,10 +1,21 @@
 <div class="color-picker">
       <div class="color-picker-inner">
+            <div class="color-option eraser" (click)="this.handleColorChange('#282c34')">
+                  <span class="text">-</span>
+            </div>
+            <!--<div class="color-option"></div>
             <div class="color-option"></div>
-            <div class="color-option"></div>
-            <div class="color-option"></div>
-            <div class="color-option"></div>
-            <div class="color-picker-opener"></div>
+            <div class="color-option"></div>-->
+            <div class="current-color" [style.background]="color">
+
+            </div>
+            <div class="color-picker-opener"
+            [(colorPicker)]="color" 
+            (colorPickerSelect)="this.handleColorChange($event)"
+            (colorPickerChange)="this.handleColorChange($event)"
+            [cpAlphaChannel]="'disabled'">
+                  <span class="text">+</span>
+            </div>
       </div>
 </div>
             
