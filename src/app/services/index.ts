@@ -3,3 +3,4 @@ export * from './global/global.service';
 export * from './palette-state/palette-state.service';
 export * from './user/user.service';
 export * from './element-projection/element-projection.service';
+export * from './chat/chat.service';

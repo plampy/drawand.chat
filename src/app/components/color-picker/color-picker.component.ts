@@ -18,11 +18,11 @@ export class ColorPickerComponent implements OnInit, AfterViewInit {
   }
   //Style overrides due to use of thirdparty lib
   ngAfterViewInit(){
-    var el = this.colorPickerContainer.nativeElement;
-    var colorPicker = el.querySelector('.color-picker');
-    colorPicker.style.borderRadius = "4px";
-    colorPicker.style.backgroundColor= "#282c34";
-    colorPicker.style.border= "none";
+    // var el = this.colorPickerContainer.nativeElement;
+    // var colorPicker = el.querySelector('.color-picker');
+    // colorPicker.style.borderRadius = "4px";
+    // colorPicker.style.backgroundColor= "#282c34";
+    // colorPicker.style.border= "none";
   }
   handleColorChange(color){
     var currentState = Object.assign({}, this.palette.state$.value);

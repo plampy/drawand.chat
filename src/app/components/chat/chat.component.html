@@ -4,22 +4,23 @@
     Group Chat
     <!--Group chat <span style="float:right">join?</span>-->
   </div>
-  <div class="chat-body">
-    <div class="chat-message">
+  <div class="chat-body" #chatBody>
+    <div class="chat-message" *ngFor="let chat of (this.chatService.chatMessages$ | async)">
       <div class="chat-avatar"></div>
       <div class="chat-content">
         <div class="chat-content-header">
-
+          <span class="chat-username" [style.color]="chat.user.chipColor">{{chat.user.username}}</span>
+          <span class="chat-date" >{{chat.date }}</span>
         </div>
         <div class="chat-content-body">
-          Blah blah
+          {{ chat.message }}
         </div>
       </div>
     </div>
   </div>
   <div class="chat-footer">
-    <textarea class="chat-input" placeholder="send a message"></textarea>
-    <button class="btn">Chat</button>
+    <textarea class="chat-input" [(ngModel)]="chatMessage" placeholder="send a message"></textarea>
+    <button class="btn" (click)="sendChatMessage()">Chat</button>
     <i class="material-icons">settings</i>
   </div>
 </div>

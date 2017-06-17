@@ -5,9 +5,14 @@ module.exports = {
     addConnectedUser: addConnectedUser,
     removeConnectedUser: removeConnectedUser,
     getUsersState: getUsersState,
-    updateUser: updateUser
+    updateUser: updateUser,
+    getUserById: getUserById
 };
 
+function getUserById(id){
+    var user = inMem.users.find(x => x.id === id);
+    return user.getClientSafeProperties();
+}
 function getUsersState() {
     return inMem.users.map(user => user.getClientSafeProperties())
 }

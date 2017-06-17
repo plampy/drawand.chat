@@ -29,7 +29,7 @@
             border: none;
             box-shadow: inset 0 0 1px 1px rgba(0,0,0,.5);
             width: 100%;
-            height: 125px;
+            height: 80px;
             outline: none;
             color: @color-neutral-white-lighter;
         }
@@ -59,12 +59,25 @@
         left: 0;
         right: 0;
         margin-top:268px;
-        margin-bottom: 202px;
+        margin-bottom: 156px;
         overflow-y: auto;
         
         .chat-message {
             min-height: 100px;
-            
+            .chat-content{
+                .chat-content-header{
+                    padding: 8px;
+                    .chat-date{
+                        display: block;
+                        color: @color-neutral-black-lighter;
+                        font-size: 12px;
+                    }
+                }
+                .chat-content-body{
+                    padding: 8px;
+                }
+            }
+            border-top:1px solid rgba(36, 39, 46, 1);
         }
     }
 }
